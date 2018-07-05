@@ -4,8 +4,11 @@
   "description": "social network for developers",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [],
   "author": "layer",
@@ -22,6 +25,7 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
+    "concurrently": "^3.6.0",
     "nodemon": "^1.17.5"
   }
 }
