@@ -21,16 +21,16 @@ class ProfileCreds extends Component {
         </p>
         <p>
           {exp.location === "" ? null : (
-            <p>
+            <span>
               <strong>Location: </strong> {exp.location}
-            </p>
+            </span>
           )}
         </p>
         <p>
           {exp.description === "" ? null : (
-            <p>
+            <span>
               <strong>Description: </strong> {exp.description}
-            </p>
+            </span>
           )}
         </p>
       </li>
@@ -63,9 +63,9 @@ class ProfileCreds extends Component {
       </li>
     ));
     return (
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="text-center text-info">Experience</h3>
+      <div className="row">
+        <div className="col-md-6">
+          <h3 className="text-center text-info">Experience</h3>
           {expItems.length > 0 ? (
             <ul className="list-group">{expItems}</ul>
           ) : (
@@ -73,8 +73,8 @@ class ProfileCreds extends Component {
           )}
         </div>
 
-        <div class="col-md-6">
-          <h3 class="text-center text-info">Education</h3>
+        <div className="col-md-6">
+          <h3 className="text-center text-info">Education</h3>
           {eduItems.length > 0 ? (
             <ul className="list-group">{eduItems}</ul>
           ) : (
