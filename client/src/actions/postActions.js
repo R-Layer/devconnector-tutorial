@@ -3,6 +3,7 @@ import {
   ADD_POST,
   GET_ERRORS,
   GET_POSTS,
+  GET_POST,
   POST_LOADING,
   DELETE_POST
 } from "./types";
@@ -23,6 +24,16 @@ export const getPosts = () => dispatch => {
     .get("/api/posts")
     .then(res => dispatch({ type: GET_POSTS, payload: res.data }))
     .catch(err => dispatch({ type: GET_POSTS, payload: null }));
+};
+
+// Get Post
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res => dispatch({ type: GET_POST, payload: res.data }))
+    .catch(err => dispatch({ type: GET_POST, payload: null }));
 };
 
 // Delete Posts
@@ -46,6 +57,14 @@ export const removeLike = id => dispatch => {
   axios
     .post(`/api/posts/unlike/${id}`)
     .then(res => dispatch(getPosts()))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+};
+
+// Add comment
+export const addComment = (postId, commentData) => dispatch => {
+  axios
+    .post(`/api/posts/comment/${postId}`, commentData)
+    .then(res => dispatch({ type: GET_POST, payload: res.data }))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
