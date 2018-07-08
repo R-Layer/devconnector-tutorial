@@ -1,5 +1,5 @@
-module.exports = {
-  MONGODB_URI:
-    "mongodb://layer:]breaD44[@ds125341.mlab.com:25341/devconnector-tutorial",
-  JWT_SECRET: "jeySecret"
-};
+if (process.env.NODE_ENV === "production") {
+  module.exports = require("./keys_prod");
+} else {
+  module.exports = require("./keys_dev");
+}
